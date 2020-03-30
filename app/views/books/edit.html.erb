@@ -1,0 +1,25 @@
+
+
+
+
+
+<div class="col-md-6 col-md-offset-3">
+	<h1>Editing Book</h1>
+
+	<%= form_for(@book, url: book_path(@book), method: :patch) do |f| %>
+	  <p>Title</p>
+	  <%= f.text_field :title %>
+	  <p>Opinion</p>
+	  <%= f.text_area :body %>
+	  <%= f.submit 'Update Book', class: "btn btn-primary col-xs-12" %>
+	<% end %>
+
+	<%= link_to "Show", book_path %>
+	|
+	<%= link_to "Back", books_path %>
+</div>
+
+
+
+
+
