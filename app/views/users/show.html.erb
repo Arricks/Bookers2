@@ -1,11 +1,8 @@
-
-<div class="top">
-
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-    <p>User info</p>
-      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+    <h2>User info</h2>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb", size:'100x100' %>
         <table class="table">
           <tr>
 　　        <th>name</th>
@@ -16,17 +13,17 @@
 　　        <th><%= @user.introduction %></th>
 　　      </tr>
         </table>
-      <%= link_to  edit_user_path, class: "btn btn-default" do %>
+      <%= link_to  edit_user_path, class: "btn btn-default col-xs-12" do %>
         <i class="fa fa-wrench"></i>
       <% end %>
       <p>New book</p>
       <%= form_for @book do |f| %>
         <p>Title</p>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class: "col-xs-12" %>
         <p>Opinion</p>
-        <%= f.text_area :body %>
-        <%= f.submit 'Create Book' %>
-      <% end %>
+        <%= f.text_area :body, class: "col-xs-12" %>
+        <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+        <% end %>
     </div>
 
     <div class="col-xs-9">
@@ -38,7 +35,7 @@
             <td><%= attachment_image_tag @user, :profile_image %><br>
               <%= book.user.name %>
             </td>
-            <td><%= book.title %></td>
+            <td><%=link_to book.title, book_path(book) %></td>
             <td><%= book.body %></td>
             <td><%= link_to "Edit", edit_book_path(book.id), class: "btn btn-success" %></td>
             <td><%= link_to "Delete", book_path(book.id), class: "btn btn-danger", method: :delete %></td>
@@ -50,6 +47,3 @@
 
   </div>
 </div>
-
-</div>
-

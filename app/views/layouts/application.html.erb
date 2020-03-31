@@ -13,13 +13,11 @@
   </head> 
 
   <body>
-
-    <div class="header" id="header">
-      <nav class="navbar navbar-main navbar-shadow" role="navigation" id="slide-nav">
+      <nav class="navbar navbar-main navbar-shadow navbar-inverse" role="navigation" id="slide-nav">
         <div class="container relative">
           <div class="navbar-header">
             <h1 class="navbar-logo" href="/">
-              <strong>Bookers</strong>
+              <strong id="white">Bookers</strong>
             </h1>
    
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
@@ -32,45 +30,68 @@
           <div id="slidemenu">
             <ul class="nav navbar-nav navbar-right">
   	      	  <% if user_signed_in? %>
-              	<li class="glyphicon glyphicon-home home">
-                  <%= link_to 'Home', "/users" %>
+              	<li>
+                  <%= link_to user_path(current_user) do %>
+                    <span class="glyphicon glyphicon-home home">Home<span>
+                  <% end %>
                 </li>
 
-                <li class="glyphicon glyphicon-user users">
-                  <%= link_to 'Users', "/users" %>
+                <li>
+                  <%= link_to "/users" do %>
+                    <span class="glyphicon glyphicon-user users">Users<span>
+                  <% end %>
                 </li>
 
-                <li class="glyphicon glyphicon-book books">
-                  <%= link_to 'Books', "/books" %>
+                <li>
+                  <%= link_to books_path do %>
+                    <span class="glyphicon glyphicon-book books">Books<span>
+                  <% end %>
                 </li>
 
-                <li class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete">
-                  <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <span class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete">logout<span>
+                  <% end %>
                 </li>
 
               <% else %>
-                <li class="glyphicon glyphicon-home home">
-                  <%= link_to 'Home', home_index_path %>
+                <li>
+
+                <li>
+                  <%=  link_to root_path do %>
+                    <span class="glyphicon glyphicon-home home">Home<span>
+                  <% end %>
                 </li>
 
-                <li class="glyphicon glyphicon-link about">
-                  <%= link_to 'About', "/home/about" %>
+                <li>
+                  <%=  link_to home_about_path do %>
+                    <span class="glyphicon glyphicon-link about">About<span>
+                  <% end %>
                 </li>
 
-                <li class="glyphicon glyphicon-edit sign_up">
-                  <%= link_to 'sign up', "/users/sign_up" %>
+                <li>
+                  <%=  link_to "/users/sign_up" do %>
+                    <span class="glyphicon glyphicon-link about">sign up<span>
+                  <% end %>
                 </li>
 
-                <li class="glyphicon glyphicon-log-in sign_in">
-                  <%= link_to 'login', "/users/sign_in" %>
+                <li>
+                  <%=  link_to "/users/sign_in" do %>
+                    <span class="glyphicon glyphicon-log-in sign_in">login<span>
+                  <% end %>
                 </li>
+
               <% end %>
             </ul>
           </div>
         </div>
       </nav>
-    </div>
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
     <%= yield %>
+
+
     <footer class="">
       <div class="container">
         <div class="row">

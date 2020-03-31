@@ -19,12 +19,12 @@
 	    <% end %>
 	    <h2> New book</h2>
 	    <%= form_for(@book, url: '/users') do |f| %>
-	      <p>Title</p>
-	      <%= f.text_field :title %>
-	      <p>Opinion</p>
-	      <%= f.text_area :body %>
-	    	<%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
-	      <% end %>
+        <p>Title</p>
+        <%= f.text_field :title, class: "col-xs-12" %>
+        <p>Opinion</p>
+        <%= f.text_area :body, class: "col-xs-12" %>
+        <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+        <% end %>
 	  </div>
 	
 
@@ -44,10 +44,10 @@
     	  <tbody>
       	  <tr>
       	  	<td>
-      	  	  <%= attachment_image_tag @book.user, :profile_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+      	  	  <%= attachment_image_tag user, :profile_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
       	  	</td>
       	  	<td><%= user.name %></td>
-      	  	<td><%= link_to "show", user_path(@user) %></td>
+      	  	<td><%= link_to "Show", user_path(user) %></td>
       	  </tr>
     	  </tbody>
         <% end %>

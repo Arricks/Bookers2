@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 	    render action: :edit
 	  else
 	    @user = current_user
-	    render action: :show
 	  end
 	end
 	

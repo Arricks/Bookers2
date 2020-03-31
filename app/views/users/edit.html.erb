@@ -1,0 +1,17 @@
+
+<div class="container">
+  <p id="notice"></p>
+      <%= render 'layouts/error_messages', model: @user %>
+  <h2>User info</h2>
+	<div class="field">
+	  <%= form_for(@user, url:"/users/#{@user.id}") do |f| %>
+	  <a>Name</a><br>
+	  <%= f.text_area :name %><br>
+	  <a>Image</a><br>
+	  <%= f.file_field :profile_image %><br>
+	  <a>Introduction<br>
+	  <%= f.text_area :introduction %><br><br>
+	  <%= f.submit 'Update User' %></a>
+	  <% end %><br>
+  </form>
+</div>

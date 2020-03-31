@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-3">
     <p>User info</p>
-      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb", size:'100x100' %>
         <table class="table">
           <tr>
 　　        <th>name</th>
@@ -19,11 +19,11 @@
       <p>New book</p>
       <%= form_for @new_book do |f| %>
         <p>Title</p>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, class: "col-xs-12" %>
         <p>Opinion</p>
-        <%= f.text_area :body %>
-        <%= f.submit 'Create Book' %>
-      <% end %>
+        <%= f.text_area :body, class: "col-xs-12" %>
+        <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+        <% end %>
     </div>
   
 
@@ -45,12 +45,14 @@
             <td>
               <%= @book.body %>
             </td>
+        <% if @book.user == current_user %>
             <td>
               <%= link_to "Edit", edit_book_path(@book), class: "btn-sm btn-success" %>
             </td>
             <td>
-              <%= link_to "destroy", book_path(@book), class: "btn-sm btn-danger", method: :delete %>
+              <%= link_to "Destroy", book_path(@book), class: "btn-sm btn-danger", method: :delete %>
             </td>
+        <% end %>
           </tr>
         </tbody>
       </table>
